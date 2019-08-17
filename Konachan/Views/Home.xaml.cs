@@ -48,13 +48,10 @@ namespace Konachan.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (e.Parameter != null)
+            list.Items.Clear();
+            if (e.Parameter != null && !string.IsNullOrWhiteSpace(e.Parameter.ToString()))
             {
-                if (!string.IsNullOrWhiteSpace(e.Parameter.ToString()))
-                {
-                    list.Items.Clear();
-                    url = "http://konachan.net/post.json?limit=15&page=" + page.ToString() + "&tags=" + e.Parameter.ToString();
-                }
+                url = "http://konachan.net/post.json?limit=15&page=" + page.ToString() + "&tags=" + e.Parameter.ToString();
             }
             else
             {
@@ -75,8 +72,9 @@ namespace Konachan.Views
                 }
             }
             list_index.SelectedIndex = 0;
+            Load();
         }
-        async Task load()
+        async Task Load()
         {
             try
             {
@@ -84,6 +82,7 @@ namespace Konachan.Views
                 isload.IsLoading = true;
                 string arg = Regex.Match(url, @"&page=\d*").Value;
                 string URL = url.Replace(arg, "&page=" + page.ToString());
+                popup.Show(URL);
                 List<PostPic> mylist = JsonConvert.DeserializeObject<List<PostPic>>(await BaseService.SentGetAsync(URL));
                 switch (State)
                 {
@@ -113,7 +112,7 @@ namespace Konachan.Views
                         if (count < 10)
                         {
                             page++;
-                            await load();
+                            await Load();
                         }
                         else
                         {
@@ -232,7 +231,7 @@ namespace Konachan.Views
                     index = num - 1;
                     refreshIndex();
                 }
-                await load();
+                await Load();
             }
         }
 

@@ -64,9 +64,12 @@
                             <TextBlock x:Name="txt_addr" TextWrapping="Wrap" IsTextSelectionEnabled="True"/>
                         </StackPanel>
                     </ScrollViewer>
+                    <StackPanel x:Name="wallpaper" Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button Width="120" Content="设为壁纸" Click="OnSaveAsWallpaperClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </StackPanel>
                     <StackPanel x:Name="btns" Orientation="Horizontal" Grid.Row="1">
-                        <Button Width="120" Content="保存此JPG" Click="Button_Click"/>
-                        <Button Width="120" Margin="20,0,0,0" Content="下载PNG文件" Click="Button_Click_1"/>
+                        <Button Width="120" Content="保存此JPG" Click="OnSaveJpegButtonClicked"/>
+                        <Button Width="120" Margin="20,0,0,0" Content="下载PNG文件" Click="OnDownloadButtonClicked"/>
                     </StackPanel>
                 </Grid>
             </SplitView.Pane>

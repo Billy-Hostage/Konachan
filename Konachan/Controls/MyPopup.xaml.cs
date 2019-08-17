@@ -12,11 +12,11 @@ namespace Konachan.Controls
             this.InitializeComponent();
         }
 
-        public async Task Show(string message)
+        public async Task Show(string message, int delayInMs = 1500)
         {
             txt_pop.Text = message;
             pop.IsOpen = true;
-            await Task.Delay(1500);
+            await Task.Delay(delayInMs);
             pop.IsOpen = false;
         }
     }

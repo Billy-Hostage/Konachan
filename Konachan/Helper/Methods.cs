@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.System.UserProfile;
 
 namespace Konachan.Helper
 {
@@ -59,6 +60,23 @@ namespace Konachan.Helper
                 }
             }
             return folder;
+        }
+
+        public async static Task<bool> SetPicAsWallPapaer(StorageFile pic)
+        {
+            if (pic == null) return false;
+            
+            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+            StorageFile wallPaper;
+            if(await localFolder.TryGetItemAsync(pic.Name) == null)
+            {
+                wallPaper = await pic.CopyAsync(localFolder);
+            }
+            else
+            {
+                wallPaper = await localFolder.GetFileAsync(pic.Name);//File already exists
+            }
+            return await UserProfilePersonalizationSettings.Current.TrySetWallpaperImageAsync(wallPaper);
         }
     }
 }

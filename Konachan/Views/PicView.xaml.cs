@@ -17,14 +17,10 @@ using Windows.Foundation;
 using Windows.ApplicationModel.DataTransfer;
 using System.IO;
 using Windows.System;
-
-// “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
+using Windows.System.UserProfile;
 
 namespace Konachan.Views
 {
-    /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
-    /// </summary>
     public sealed partial class PicView : Page
     {
         public delegate void Search(string tag);
@@ -34,13 +30,14 @@ namespace Konachan.Views
         string ID = string.Empty;
         PostPic Pic = new PostPic();
         StorageFile file = null;
+
         public PicView()
         {
             InitializeComponent();
         }
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            await popup.Show("轻触屏幕以查看图片信息");
+            popup.Show("轻触屏幕以查看图片信息", 3000);//Why await anyways?
             if (e.Parameter.GetType() == typeof(PostPic))
             {
                 isLocal = false;
@@ -110,6 +107,7 @@ namespace Konachan.Views
                     txt_time.Text = Pic.Created_at;
                     tags.ItemsSource = Pic.Tags.Split(' ');
                     txt_size.Text = (double.Parse(Pic.File_size) / Math.Pow(1024, 2)).ToString("0.00") + "MB";
+                    wallpaper.Visibility = Visibility.Collapsed;
                     isLoad = true;
                 }
                 else if (isLocal == true && file != null)
@@ -132,12 +130,12 @@ namespace Konachan.Views
             }
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private async void OnSaveJpegButtonClicked(object sender, RoutedEventArgs e)
         {
             await SavePicture();
         }
 
-        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void OnDownloadButtonClicked(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -151,6 +149,26 @@ namespace Konachan.Views
             catch (Exception err)
             {
                 await popup.Show("错误:" + err.Message);
+            }
+        }
+
+        private async void OnSaveAsWallpaperClicked(object sender, RoutedEventArgs e)
+        {
+            if ((isLocal != true) || file == null) return;
+
+            if (!UserProfilePersonalizationSettings.IsSupported())
+            {
+                await popup.Show("当前设备不支持更换壁纸");
+                return;
+            }
+
+            if(await Methods.SetPicAsWallPapaer(file))
+            {
+                await popup.Show("将当前图片设为壁纸");
+            }
+            else
+            {
+                await popup.Show("将当前图片设为壁纸失败！");
             }
         }
 
@@ -197,5 +215,6 @@ namespace Konachan.Views
         {
             await Launcher.LaunchUriAsync(new Uri(string.Format("http://konachan.net/post/show/{0}/", ID)));
         }
+
     }
 }

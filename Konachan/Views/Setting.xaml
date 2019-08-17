@@ -23,9 +23,11 @@
                 <TextBlock TextWrapping="Wrap" Text="③好孩子别乱点上面的开关."/>
                 <TextBlock Text="关于" FontSize="24" FontWeight="Light" Foreground="{ThemeResource theme}"/>
                 <TextBlock TextWrapping="Wrap" Text="本应用基于Koachan™网站开发."/>
+                <TextBlock TextWrapping="Wrap" Text="原作者DaweiX@Github 由NTRHostage@Github改动"/>
+                <HyperlinkButton Content="原Github Repo" Click="OGitRepoEmailHyperlinkButton_Click"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="发现bug请及时反馈:" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                    <HyperlinkButton Content="联系我" Click="HyperlinkButton_Click"/>
+                    <!--<TextBlock Text="发现bug请及时反馈:" VerticalAlignment="Center" Margin="0,0,8,0"/>-->
+                    <HyperlinkButton Content="联系原作者" Click="OAutherEmailHyperlinkButton_Click"/>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

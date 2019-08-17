@@ -55,9 +55,9 @@ namespace Konachan
             TitleBar.ButtonHoverBackgroundColor = Colors.White;
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
-                StatusBar sb = StatusBar.GetForCurrentView();
-                sb.BackgroundColor = color;
-                sb.BackgroundOpacity = 1;
+                //StatusBar sb = StatusBar.GetForCurrentView();
+                //sb.BackgroundColor = color;
+                //sb.BackgroundOpacity = 1;
             }
         }
         //后退键

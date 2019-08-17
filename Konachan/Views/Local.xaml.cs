@@ -69,14 +69,21 @@ namespace Konachan.Views
 
         private async void del_Click(object sender, RoutedEventArgs e)
         {
-            StorageFolder folder = await Methods.GetMyFolderAsync();
-            foreach (LocalPic Pic in list.SelectedItems)
+            try
             {
-                StorageFile file = await folder.GetFileAsync(Pic.File.Name);
-                await file.DeleteAsync();
-                list.Items.Remove(Pic);
+                StorageFolder folder = await Methods.GetMyFolderAsync();
+                foreach (LocalPic Pic in list.SelectedItems)
+                {
+                    StorageFile file = await folder.GetFileAsync(Pic.File.Name);
+                    await file.DeleteAsync();
+                    list.Items.Remove(Pic);
+                }
+                list.SelectionMode = ListViewSelectionMode.None;
             }
-            list.SelectionMode = ListViewSelectionMode.None;
+            catch (Exception ex)
+            {
+                await popup.Show("错误：" + ex.Message);
+            }
         }
     }
 }

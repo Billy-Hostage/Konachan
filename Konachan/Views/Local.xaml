@@ -5,6 +5,7 @@
     xmlns:local="using:Konachan.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c="using:Konachan.Controls"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -16,6 +17,7 @@
             <AppBarButton x:Name="mutiselect" Icon="List" Label="多项选择" Click="mutiselect_Click"/>
             <AppBarButton x:Name="del" Icon="Delete" Label="删除选中" Click="del_Click"/>
         </CommandBar>
+        <c:MyPopup x:Name="popup"/>
         <ScrollViewer x:Name="scroll">
             <GridView x:Name="list" SelectionMode="None" IsItemClickEnabled="True" ItemClick="list_ItemClick">
                 <GridView.ItemTemplate>

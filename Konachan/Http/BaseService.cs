@@ -18,7 +18,9 @@ namespace Konachan.Http
             HttpClient client = new HttpClient();
             Uri uri = new Uri(url);
             HttpResponseMessage msg = await client.GetAsync(uri);
-            return await msg.Content.ReadAsStringAsync();
+            string msgContent = await msg.Content.ReadAsStringAsync();
+            //System.Diagnostics.Debug.WriteLine(msgContent);
+            return msgContent;
         }
         /// <summary>
         /// 获得Json数据

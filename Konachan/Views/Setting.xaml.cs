@@ -84,10 +84,15 @@ namespace Konachan.Views
             switchNight?.Invoke();
         }
 
-        private async void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        private async void OAutherEmailHyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
             await Launcher.LaunchUriAsync(new Uri("mailto:DaweiX@outlook.com"));
 
+        }
+
+        private async void OGitRepoEmailHyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://github.com/DaweiX/Konachan"));
         }
 
         private async void path_Toggled(object sender, RoutedEventArgs e)

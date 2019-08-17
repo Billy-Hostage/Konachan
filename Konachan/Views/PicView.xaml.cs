@@ -143,7 +143,7 @@ namespace Konachan.Views
             {
                 string name = "konachan_" + Pic.Id;
                 StorageFolder folder = await Methods.GetMyFolderAsync();
-                DownloadOperation download = await DownloadHelper.Download(Pic.File_url, name + Pic.File_url.Substring(Pic.File_url.Length - 3), folder);
+                DownloadOperation download = await DownloadHelper.Download(Pic.File_url, name + Pic.File_url.Substring(Pic.File_url.Length - 4), folder);
                 //如果await，那么执行完第一个StartAsync()后即退出循环.GetCurrentDownloadsAsync()方法同样会遇到此问题.(Download页)
                 IAsyncOperationWithProgress<DownloadOperation, DownloadOperation> start = download.StartAsync();
                 await popup.Show("图片已加入下载队列");

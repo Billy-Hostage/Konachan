@@ -126,6 +126,7 @@ namespace Konachan.Views
             catch (Exception e)
             {
                 await popup.Show("错误：" + e.Message);
+                isload.IsLoading = false;
             }
         }
 

@@ -12,18 +12,18 @@ namespace Konachan.Http
         public string File_size { get; set; }
         public string File_url
         {
-            get { return "http:" + fileurl; }
+            get { return /*"http:" + */fileurl; }
             set { fileurl = value; }
         }
         public string Id { get; set; }
         public string Preview_url
         {
-            get { return "http:" + url_preview; }
+            get { return /*"http:" + */url_preview; }
             set { url_preview = value; }
         }
         public string Jpeg_url
         {
-            get { return "http:" + jpegurl; }
+            get { return /*"http:" + */jpegurl; }
             set { jpegurl = value; }
         }
         public string Score { get; set; }

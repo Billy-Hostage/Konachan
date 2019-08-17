@@ -70,7 +70,7 @@
                             </ListViewItem>
                             <ListViewItem Tag="local">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE10f;" FontSize="16" VerticalAlignment="Center"/>
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xEDA2;" FontSize="16" VerticalAlignment="Center"/>
                                     <TextBlock Margin="24,0,0,0" Text="本地图片" FontSize="16" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </ListViewItem>

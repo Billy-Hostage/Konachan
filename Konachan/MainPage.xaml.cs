@@ -10,13 +10,10 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 
-//“空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 上有介绍
 
 namespace Konachan
 {
-    /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
-    /// </summary>
+
     public sealed partial class MainPage : Page
     {
         bool isExit = false;
@@ -25,6 +22,7 @@ namespace Konachan
             this.InitializeComponent();
             SystemNavigationManager.GetForCurrentView().BackRequested += MainPage_BackRequested;
             mainframe.Navigate(typeof(Views.Home));
+            MainList.SelectedIndex = 0;
             TitleBarInit();
             MainPage_switchNight();
             Views.DownLoad.send += SendToast;
@@ -53,12 +51,12 @@ namespace Konachan
             TitleBar.ForegroundColor = Colors.White;
             TitleBar.ButtonHoverForegroundColor = Colors.Black;
             TitleBar.ButtonHoverBackgroundColor = Colors.White;
-            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
-            {
-                //StatusBar sb = StatusBar.GetForCurrentView();
-                //sb.BackgroundColor = color;
-                //sb.BackgroundOpacity = 1;
-            }
+            //if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            //{
+            //    StatusBar sb = StatusBar.GetForCurrentView();
+            //    sb.BackgroundColor = color;
+            //    sb.BackgroundOpacity = 1;
+            //}
         }
         //后退键
         private async void MainPage_BackRequested(object sender, BackRequestedEventArgs e)

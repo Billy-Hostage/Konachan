@@ -13,6 +13,7 @@
                 <TextBlock Text="设置" FontSize="24" FontWeight="Light" Foreground="{ThemeResource theme}"/>
                 <ToggleSwitch x:Name="night" Header="夜间模式" Toggled="night_Toggled"/>
                 <ToggleSwitch x:Name="cost" Header="仅使用wifi下载png图片" Toggled="cost_Toggled"/>
+                <ToggleSwitch x:Name="site" Header="使用站点" OnContent="使用.com站" OffContent="使用.net站" Toggled="site_Toggled"/>
                 <ToggleSwitch x:Name="safe" Header="安全模式" OnContent="我还只是个宝宝" OffContent="我是绅士我自豪" Toggled="safe_Toggled"/>
                 <ToggleSwitch x:Name="R18" Header="仅显示18X内容" OnContent="(⊙﹏⊙)" Toggled="R18_Toggled" Visibility="Collapsed"/>
                 <ToggleSwitch x:Name="path" Header="自定义存储位置" Toggled="path_Toggled" OnContent="" OffContent=""/>

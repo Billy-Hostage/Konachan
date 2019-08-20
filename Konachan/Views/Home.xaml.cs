@@ -14,13 +14,8 @@ using Windows.Networking.BackgroundTransfer;
 using Windows.Storage;
 using Konachan.Helper;
 
-// “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
-
 namespace Konachan.Views
 {
-    /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
-    /// </summary>
     public sealed partial class Home : Page
     {
         static int page = 1;
@@ -46,17 +41,29 @@ namespace Konachan.Views
             }
         }
 
+        //TODO Refactor
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             list.Items.Clear();
-            if (e.Parameter != null && !string.IsNullOrWhiteSpace(e.Parameter.ToString()))
+
+            if (SettingHelper.ContainsKey("_site") && (bool)SettingHelper.GetValue("_site"))
             {
-                url = "http://konachan.net/post.json?limit=15&page=" + page.ToString() + "&tags=" + e.Parameter.ToString();
+                url = "http://konachan.com/post.json?limit=15&page=";
             }
             else
             {
-                url = "http://konachan.net/post.json?limit=15&page=" + page.ToString();
+                url = "http://konachan.net/post.json?limit=15&page=";
             }
+
+            if (e.Parameter != null && !string.IsNullOrWhiteSpace(e.Parameter.ToString()))
+            {
+                url += page.ToString() + "&tags=" + e.Parameter.ToString();
+            }
+            else
+            {
+                url += page.ToString();
+            }
+
             if (SettingHelper.ContainsKey("_safe"))
             {
                 if ((bool)SettingHelper.GetValue("_safe") == false)
@@ -72,7 +79,7 @@ namespace Konachan.Views
                 }
             }
             list_index.SelectedIndex = 0;
-            Load();
+            Load();//TODO not sure if this is needed.
         }
         async Task Load()
         {

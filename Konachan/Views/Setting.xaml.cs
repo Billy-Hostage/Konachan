@@ -41,6 +41,10 @@ namespace Konachan.Views
             {
                 night.IsOn = (bool)SettingHelper.GetValue("_night");
             }
+            if (SettingHelper.ContainsKey("_site"))
+            {
+                site.IsOn = (bool)SettingHelper.GetValue("_site");
+            }
             if (SettingHelper.ContainsKey("_path"))
             {
                 if (!string.IsNullOrEmpty(SettingHelper.GetValue("_path").ToString())) 
@@ -82,6 +86,11 @@ namespace Konachan.Views
         {
             SettingHelper.SetValue("_night", night.IsOn);
             switchNight?.Invoke();
+        }
+        private void site_Toggled(object sender, RoutedEventArgs e)
+        {
+            //On(true) means using .com site
+            SettingHelper.SetValue("_site", site.IsOn);
         }
 
         private async void OAutherEmailHyperlinkButton_Click(object sender, RoutedEventArgs e)

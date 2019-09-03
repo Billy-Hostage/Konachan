@@ -14,6 +14,7 @@ namespace Konachan.Controls
 
         public async Task Show(string message, int delayInMs = 1500)
         {
+            System.Diagnostics.Debug.WriteLine(message + " time: " + delayInMs.ToString());
             txt_pop.Text = message;
             pop.IsOpen = true;
             await Task.Delay(delayInMs);

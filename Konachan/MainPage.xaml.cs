@@ -138,14 +138,19 @@ namespace Konachan
                         mainframe.Navigate(typeof(Views.Home));
                     }
                     break;
-                case 1:
+                case 2:
                     {
                         mainframe.Navigate(typeof(Views.DownLoad));
                     }
                     break;
-                case 2:
+                case 3:
                     {
                         mainframe.Navigate(typeof(Views.Local));
+                    }
+                    break;
+                case 1:
+                    {
+                        mainframe.Navigate(typeof(Views.WallpaperTask));
                     }
                     break;
             }

@@ -162,7 +162,7 @@ namespace Konachan.Views
                 return;
             }
 
-            if(await Methods.SetPicAsWallPapaer(file))
+            if(await Methods.SetPicAsWallPapaer(file, false))
             {
                 await popup.Show("将当前图片设为壁纸");
             }

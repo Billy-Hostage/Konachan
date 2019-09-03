@@ -62,6 +62,12 @@
                                     <TextBlock Margin="24,0,0,0" Text="概览" FontSize="16" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </ListViewItem>
+                            <ListViewItem Tag="wallpaper">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE7F9;" FontSize="16" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="24,0,0,0" Text="壁纸与锁屏" FontSize="16" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </ListViewItem>
                             <ListViewItem Tag="download">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE118;" FontSize="16" VerticalAlignment="Center"/>

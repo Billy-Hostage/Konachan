@@ -40,7 +40,7 @@ namespace Konachan.Helper
             {
                 BackgroundDownloader downloader = new BackgroundDownloader();
                 Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(folder);
-                StorageFile file = await folder.CreateFileAsync(name, CreationCollisionOption.GenerateUniqueName);
+                StorageFile file = await folder.CreateFileAsync(name, CreationCollisionOption.ReplaceExisting);
                 DownloadOperation download = downloader.CreateDownload(new Uri(url), file);
                 if (SettingHelper.ContainsKey("_downloadcost"))
                 {

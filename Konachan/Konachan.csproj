@@ -12,7 +12,7 @@
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -112,8 +112,6 @@
     <Compile Include="Controls\ScalableGrid.cs" />
     <Compile Include="Controls\WrapPanel.cs" />
     <Compile Include="Helper\DownloadHelper.cs" />
-    <Compile Include="Helper\Methods.cs" />
-    <Compile Include="Helper\SettingHelper.cs" />
     <Compile Include="Helper\WebStatusHelper.cs" />
     <Compile Include="Http\BaseService.cs" />
     <Compile Include="Http\Models.cs" />
@@ -135,6 +133,9 @@
     </Compile>
     <Compile Include="Views\Setting.xaml.cs">
       <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WallpaperTask.xaml.cs">
+      <DependentUpon>WallpaperTask.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -194,14 +195,28 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\WallpaperTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>5.1.0</Version>
+      <Version>6.2.9</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>9.0.1</Version>
+      <Version>12.0.2</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Konachan.BackgroundTasks\Konachan.BackgroundTasks.csproj">
+      <Project>{c0b0a164-7005-4f9f-83df-eed23c6b24e4}</Project>
+      <Name>Konachan.BackgroundTasks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Konanchan.Helper\Konachan.Helper.csproj">
+      <Project>{b6b019d0-4ca9-4070-8bf0-45fec543306b}</Project>
+      <Name>Konachan.Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

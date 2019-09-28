@@ -172,6 +172,26 @@ namespace Konachan.Views
             }
         }
 
+        private async void OnSaveAsLockscreenClicked(object sender, RoutedEventArgs e)
+        {
+            if ((isLocal != true) || file == null) return;
+
+            if (!UserProfilePersonalizationSettings.IsSupported())
+            {
+                await popup.Show("当前设备不支持更换锁屏");
+                return;
+            }
+
+            if (await Methods.SetPicAsWallPapaer(file, true))
+            {
+                await popup.Show("将当前图片设为锁屏");
+            }
+            else
+            {
+                await popup.Show("将当前图片设为锁屏失败！");
+            }
+        }
+
         private void tags_ItemClick(object sender, ItemClickEventArgs e)
         {
             GotoSearch(e.ClickedItem.ToString().Replace(' ', '_'));

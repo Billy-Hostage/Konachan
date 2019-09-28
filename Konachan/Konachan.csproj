@@ -112,7 +112,6 @@
     <Compile Include="Controls\ScalableGrid.cs" />
     <Compile Include="Controls\WrapPanel.cs" />
     <Compile Include="Helper\DownloadHelper.cs" />
-    <Compile Include="Helper\WebStatusHelper.cs" />
     <Compile Include="Http\BaseService.cs" />
     <Compile Include="Http\Models.cs" />
     <Compile Include="MainPage.xaml.cs">

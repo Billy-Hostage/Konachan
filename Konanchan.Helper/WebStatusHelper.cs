@@ -10,7 +10,7 @@ namespace Konachan.Helper
         PPPoE
     }
 
-    class WebStatusHelper
+    public sealed class WebStatusHelper
     {
         /// <summary>
         /// 检查是否有网络连接

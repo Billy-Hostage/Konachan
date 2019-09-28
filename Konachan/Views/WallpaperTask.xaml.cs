@@ -159,8 +159,11 @@ namespace Konachan.Views
             if (!wallpaperTaskSettings.IsEnable)
                 return;
 
-            var req = await Windows.ApplicationModel.Background.BackgroundExecutionManager.RequestAccessAsync();
-            //TODO Check req response
+            int req = (int)await BackgroundExecutionManager.RequestAccessAsync();
+            if(req != 1 || req != 4)
+            {
+                popup.Show("后台任务受到系统限制，任务可能无法成功运行");
+            }
             if (wallpaperTaskSettings.IsWPEnable)
                 SetupWallpaperTask();
             if (wallpaperTaskSettings.IsLSEnable)
